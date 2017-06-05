@@ -8,11 +8,10 @@ var {
     TabBarBottom
 } = require("react-navigation");
 
-var SearchView = require('./search/Search');
-var NotifyView = require('./notify/Notify');
-var MeView = require('./me/Me');
-var TabBarItem = require('./widget/TabBarItem');
-var Ionicons = require('react-native-vector-icons/Ionicons')
+var SearchView = require('./search/SearchView');
+var NotifyView = require('./notify/NotifyView');
+var MeView = require('./me/MeView');
+var LoginView = require('./login/LoginView');
 
 var {
     View,
@@ -74,16 +73,18 @@ const HomeView = TabNavigator(
                     />
                 )
             }
+
         },
 
     },
     {
-
+        swipeEnabled:true,
     }
 );
 
 const RouteView = StackNavigator(
     {
+
         Tab: { screen: HomeView },
     },
     {
