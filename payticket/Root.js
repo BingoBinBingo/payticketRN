@@ -52,7 +52,7 @@ const HomeView = TabNavigator(
         Notify: {
             screen: NotifyView,
             navigationOptions: {
-                title:'通知',
+                headerTitle:'通知中心',
                 tabBarIcon:({ focused, tintColor }) => (
                     <Image
                         source={require('../img/notifications_icon.png')}
@@ -78,20 +78,35 @@ const HomeView = TabNavigator(
 
     },
     {
+        initialRouteName:'Me', //默认显示界面
         swipeEnabled:true,
+        animationEnabled:true,
+        tabBarOptions: {
+            labelStyle: {
+                fontSize: 14, // 文字大小
+            },
+        }
+
     }
 );
 
 const RouteView = StackNavigator(
     {
+        Login: {
+            screen: LoginView,
+            navigationOptions: {
+                header:null,
+            }
+        },
 
-        Tab: { screen: HomeView },
+        Tab: {
+            screen: HomeView,
+            navigationOptions: {
+                headerLeft:null,
+            }
+        },
     },
     {
-        navigationOptions: {
-            headerBackTitle: null,
-            headerTintColor: '#333333',
-        },
     }
 );
 
