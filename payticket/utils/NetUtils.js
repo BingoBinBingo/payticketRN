@@ -1,15 +1,16 @@
+var React = require("react");
 
 
-class NetUtils {
-
+class NetUtils extends React.Component {
     static DouB_Api = 'https://api.douban.com/v2/movie/top250?start=0&count=20';
+
     /**
      * post请求
      * url : 请求地址
      * data : 参数(Json对象)
      * callback : 回调函数
      * */
-    static postJson(url, data, callback) {
+    static postJson (url, data, callback, errorcb) {
         var fetchOption = {
             method: 'POST',
             headers: {
@@ -22,7 +23,10 @@ class NetUtils {
         fetch(url, fetchOption)
             .then((response) => response.text())
             .then((responseText) => {
-                callback(JSON.parse(responseText))
+                callback(responseText + ",黄彬")
+                // callback(JSON.parse(responseText))
+            }).catch((error) => {
+                 console.log("postJson error: " + error)
             })
             .done();
     }
@@ -45,7 +49,11 @@ class NetUtils {
             .then((responseText) => {
                 callback(JSON.parse(responseText));
             }).done();
-    }
+        }
+}
+
+
+
 
 
 
@@ -56,7 +64,7 @@ class NetUtils {
      *  params:参数
      *  callback:回调函数
      * */
-    static get(url,params,callback){
+    const get1 = function (url,params,callback){
         if (params) {
             let paramsArray = [];
             //拼接参数
@@ -86,7 +94,7 @@ class NetUtils {
      *  params:参数,这里的参数格式是：{param1: 'value1',param2: 'value2'}
      *  callback:回调函数
      * */
-    static postJSON(url,params,callback){
+    const postJSON = function(url,params,callback){
         //fetch请求
         fetch(url,{
             method: 'POST',
@@ -111,7 +119,7 @@ class NetUtils {
      *  params:参数,这里的参数要用这种格式：'key1=value1&key2=value2'
      *  callback:回调函数
      * */
-    static postForm(url,params,callback){
+    const postForm =function (url,params,callback){
         //fetch请求
         fetch(url,{
             method: 'POST',
@@ -127,8 +135,15 @@ class NetUtils {
             .catch((error) => {
                 console.log("error = " + error)
             });
-    }
 
 }
 
-export default NetUtils;
+module.exports = NetUtils;
+
+
+
+//将JSON数据转换成字符串
+//JSON.stringify(params)
+
+//将数据JSON化
+//JSON.parse(responseJSON)

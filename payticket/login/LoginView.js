@@ -32,6 +32,7 @@ var StyleObj = StyleSheet.create({
         backgroundColor: '#01aaff',
         borderRadius: 2,
         alignItems: 'center',
+        justifyContent:'center'
     },
 
     loginTv: {
@@ -66,8 +67,20 @@ var LoginView = React.createClass({
         // AlertIOS.prompt("答案", "默认答案",null);
         this.props.navigation.navigate('Tab', { name: 'two' });
 
-        NetUtils.get(NetUtils.DouB_Api, null);
+        var login = {
+            email: "1233445@qq.com",
+            password: "1234567",
+            username: "23232323"
+        };
+        NetUtils.postJson('https://www.guufar.com/api/user/register',
+            login,
+            function (success) {
+            AlertIOS.alert("1成功", success);
+        }, function (error) {
+            AlertIOS.alert("2错误", error);
+        });
     }
 });
+
 
 module.exports = LoginView;

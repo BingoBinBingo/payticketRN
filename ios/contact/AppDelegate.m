@@ -18,7 +18,17 @@
 {
   NSURL *jsCodeLocation;
 
-  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
+//  jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index.ios" fallbackResource:nil];
+  //移动热点
+//  jsCodeLocation = [
+//                    NSURL URLWithString:@"http://172.20.10.3:8081/index.ios.bundle?platform=ios&dev=true"];
+  //公司wifi
+//    jsCodeLocation = [
+//                      NSURL URLWithString:@"http://192.168.31.228:8081/index.ios.bundle?platform=ios&dev=true"];
+  
+  jsCodeLocation = [
+                    NSURL URLWithString:@"http://192.168.1.103:8081/index.ios.bundle?platform=ios&dev=true"];
+
 
   RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
                                                       moduleName:@"contact"
